@@ -1,0 +1,42 @@
+﻿<div class="container">
+    <button ng-click="getItems()" class="btn btn-default">Get Items</button>
+
+    <form role="form" ng-submit="addItem()">
+        <div class="form-group">
+            <label for="itemName">Name</label>
+            <input class="form-control" id="itemName" placeholder="Enter item name" ng-model="currentItem.ItemName" />
+        </div>
+        <div class="form-group">
+            <label for="itemDescription">Description</label>
+            <input class="form-control" id="itemDescription" placeholder="Enter item description" ng-model="currentItem.ItemDescription" />
+        </div>
+        <div class="form-group">
+            <label for="itemPrice">Price</label>
+            <input class="form-control" id="itemPrice" placeholder="Enter item price" ng-model="currentItem.ItemPrice" />
+        </div>
+        <div class="form-group">
+            <label for="itemImageUrl">Image Url</label>
+            <input class="form-control" id="itemImageUrl" placeholder="Enter image url" ng-model="currentItem.ImageUrl"/>
+        </div>
+
+        <button type="submit" class="btn btn-success text-right">Add</button>
+    </form>
+
+
+    <table class="table table-condensed table-hover" ng-if="!error.message">
+        <tr>
+            <th>ItemName</th>
+            <th>ItemDescription</th>
+            <th>ItemPrice</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="item in items">
+            <td>{{item.ItemName}}</td>
+            <td>{{item.ItemDescription}}</td>
+            <td>{{item.ItemPrice}}</td>
+            <td><img ng-src="{{item.ImageUrl}}"  class="img-thumbnail"/></td>
+        </tr>
+    </table>
+
+    <p ng-if="error.message">{{error.message}}</p>
+</div>
